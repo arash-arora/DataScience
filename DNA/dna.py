@@ -3,6 +3,7 @@ import streamlit as st
 import altair as alt
 from PIL import Image
 import os
+import random
 
 #Image 
 path = os.path.dirname(__file__)
@@ -21,6 +22,14 @@ This app counts the nucleotide composition of query DNA!
 st.header("Enter DNA Sequence")
 
 sequence_inp = ">DNA Query\nGAACACGTGGAGGCAAACAGGAAGGTGAAGAAGAACTTATCCTATCAGGACGGAAGGTCCTGTGCTCGGG\nATCTTCCAGACGTCGCGACTCTAAATTGCCCCCTCTGAGGTCAAGGAACACAAGATGGTTTTGGAAATGC\nTGAACCCGATACATTATAACATCACCAGCATCGTGCCTGAAGCCATGCCTGCTGCCACCATGCCAGTCCT"
+
+def generate():
+    dnaSeq = "".join(random.choices('ATGC', k=210))
+    global sequence_inp 
+    sequence_inp = ">DNA Query\n"+dnaSeq
+
+st.button("Generate Random DNA Query", on_click=generate())
+
 
 #Convert the input to a string
 sequence = st.text_area("Sequence Input", sequence_inp, height=250)
