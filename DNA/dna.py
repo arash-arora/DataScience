@@ -2,9 +2,11 @@ import pandas as pd
 import streamlit as st
 import altair as alt
 from PIL import Image
+import os
 
 #Image 
-image = Image.open("dna.png")
+path = os.path.dirname(__file__)
+image = Image.open(path+"/dna.png")
 st.image(image, use_column_width=True)
 
 #Header
